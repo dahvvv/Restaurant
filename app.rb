@@ -18,4 +18,7 @@ ActiveRecord::Base.establish_connection({
   databse: 'restaurant_db'
   })
 
-
+get '/foods' do
+  @foods = Food.all
+  erb :'/foods/index'
+end
