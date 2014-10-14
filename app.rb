@@ -44,4 +44,10 @@ patch '/foods/:id' do
   redirect "/foods/#{food.id}"
 end
 
+delete '/foods/:id' do
+  food = Food.find(params[:id])
+  food.delete
+  redirect '/foods'
+end
+
 
