@@ -1,0 +1,17 @@
+<h1>Edit <%=@food.name%></h1>
+<form action="/foods/<%=@food.id%>" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <label for="food[name]">Food Name</label>
+  <input type="text" name="food[name]" value="<%=@food.name%>" />
+  <br>
+  <label for="food[cuisine_type]">Cuisine Type</label>
+  <input type="text" name="food[cuisine_type]" value="<%=@food.cuisine_type%>" />
+  <br>
+  <label for="food[price]">Price</label>
+  <input type="text" name="food[price]" value="<%=@food.price%>" />
+  <br>
+  <label for="food[allergens]">Allergens</label>
+  <input type="text" name="food[allergens]" value="<%=@food.allergens%>" />
+  <br>
+  <input type="submit">
+</form>

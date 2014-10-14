@@ -33,3 +33,15 @@ get '/foods/:id' do
   erb :'/foods/show'
 end
 
+get '/foods/:id/edit' do
+  @food = Food.find(params[:id])
+  erb :'/foods/edit'
+end
+
+patch '/foods/:id' do
+  food = Food.find(params[:id])
+  food.update(params[:food])
+  redirect "/foods/#{food.id}"
+end
+
+
