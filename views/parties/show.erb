@@ -1,12 +1,21 @@
 <ul>
   <li>Table Number:  <%=@party.table_number%></li>
   <li>Number of Guests:  <%=@party.number_of_guests%></li>
-  <li>Order: <%=@orders%></li>
   <li>Paid?:  <%=@party.paid%></li>
   <li>ID:  <%=@party.id%></li>
+  <li>Order:
+    <% @foods.each do |food| %>
+      <li>
+        <%=food.name%>
+      </li>
+    <% end %>
+  </li>
 </ul>
 
-  <a href="/orders/new"><h3>Place an Order</h3></a>
+<form action="/orders/new" method="get">
+  <input type="hidden" name="party_id" value="<%=@party.id%>" />
+  <input type="submit" value="Place an Order" />
+</form>
 
 <h2>Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
 <form action="/parties/<%=@party.id%>" method="post">
