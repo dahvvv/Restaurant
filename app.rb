@@ -1,24 +1,29 @@
 require 'bundler'
 Bundler.require
+require './connection'
 
 ROOT_PATH = Dir.pwd
-Dir[ROOT_PATH+"/models/*.rb"].each { |file| require file }
+Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
-conn = PG::Connection.open()
-conn.exec('DROP DATABASE IF EXISTS restaurant_db;')
-conn.exec('CREATE DATABASE restaurant_db;')
-conn.close
+# conn = PG::Connection.open()
+# conn.exec('DROP DATABASE IF EXISTS restaurant_db;')
+# conn.exec('CREATE DATABASE restaurant_db;')
+# conn.close
 
-conn = PG::Connection.open(dbname: 'restaurant_db')
-conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, allergens VARCHAR(1000));')
-conn.close
-
-ActiveRecord::Base.establish_connection({
-  adapter: 'postgresql',
-  databse: 'restaurant_db'
-  })
+# conn = PG::Connection.open(dbname: 'restaurant_db')
+# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, allergens VARCHAR(1000));')
+# conn.close
 
 get '/foods' do
   @foods = Food.all
   erb :'/foods/index'
+end
+
+get '/foods/new' do
+  erb :'/foods/new'
+end
+
+post '/foods' do
+  food = Food.create(params[:food])
+  redirect '/foods'
 end

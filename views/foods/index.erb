@@ -1,0 +1,18 @@
+<h1>Foods</h1>
+<table>
+  <th>Food ID</th>
+  <th>Food Name</th>
+  <th>Cuisine</th>
+  <th>Price</th>
+  <th>Allergens?</th>
+  <% @foods.each do |food| %>
+    <tr>
+      <td><%= food.id %></td>
+      <td><%= food.name %></td>
+      <td><%= food.cuisine_type %></td>
+      <td><%= food.price %></td>
+      <td><%= food.allergens %></td>
+    </tr>
+  <% end %>
+</table>
+<h2>Add a <a href="/foods/new">new</a> food?</h2>
