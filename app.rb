@@ -27,3 +27,9 @@ post '/foods' do
   food = Food.create(params[:food])
   redirect '/foods'
 end
+
+get '/foods/:id' do
+  @food = Food.find(params[:id])
+  erb :'/foods/show'
+end
+
