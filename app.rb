@@ -1,7 +1,8 @@
 require 'bundler'
 Bundler.require
 
-ROOT_DIR = 
+ROOT_PATH = Dir.pwd
+Dir[ROOT_PATH+"/models/*.rb"].each { |file| require file }
 
 conn = PG::Connection.open()
 conn.exec('DROP DATABASE IF EXISTS restaurant_db;')
@@ -16,6 +17,5 @@ ActiveRecord::Base.establish_connection({
   adapter: 'postgresql',
   databse: 'restaurant_db'
   })
-
 
 
