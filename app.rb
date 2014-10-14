@@ -19,9 +19,19 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.exec('CREATE TABLE parties (id SERIAL PRIMARY KEY, table_number INTEGER, number_of_guests INTEGER, paid BOOLEAN);')
 # conn.close
 
+# conn = PG::Connection.open(dbname: 'restaurant_db')
+# conn.exec('DROP TABLE orders;')
+# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER);')
+# conn.close  
+
 
 
 # FOOD CRUD
+get '/' do
+  @foods = Food.all
+  @parties = Party.all
+  erb :index
+end
 
 get '/foods' do
   @foods = Food.all
@@ -77,6 +87,7 @@ end
 
 get '/parties/:id' do
   @party = Party.find(params[:id])
+  @orders = @party.orders
   erb :'/parties/show'
 end
 
@@ -97,4 +108,9 @@ delete '/parties/:id' do
   redirect '/parties'
 end
 
+
+
+get '/orders/new' do
+  erb :'/orders/new'
+end
 

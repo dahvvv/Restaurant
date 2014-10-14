@@ -1,4 +1,4 @@
 class Party < ActiveRecord::Base
-  has_many(:selections)
-  has_many(:foods, :through => :selections)
+  has_many(:orders)
+  has_many(:foods, :through => :orders)
 end

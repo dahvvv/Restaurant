@@ -1,0 +1,38 @@
+<h1>Parties</h1>
+<ul></ul>
+<table>
+  <th>Table Number</th>
+  <th>Number of Guests</th>
+  <th>Paid?</th>
+  <th>Party ID</th>
+  <% @parties.each do |party| %>
+    <tr>
+      <a href="/parties/<%=party.id%>">SELECT</a>
+      <td><%= party.table_number %></td>
+      <td><%= party.number_of_guests %></td>
+      <td><%= party.paid %></td>
+      <td><%= party.id %></td>
+    </tr>
+  <% end %>
+</table>
+<h2>Add a <a href="/parties/new">new</a> party?</h2>
+
+
+<h1>Foods</h1>
+<table>
+  <th>Food Name</th>
+  <th>Cuisine</th>
+  <th>Price</th>
+  <th>Allergens?</th>
+  <th>Food ID</th>
+  <% @foods.each do |food| %>
+    <tr>
+      <td><a href="/foods/<%=food.id%>"><%= food.name %></a></td>
+      <td><%= food.cuisine_type %></td>
+      <td><%= food.price %></td>
+      <td><%= food.allergens %></td>
+      <td><%= food.id %></td>
+    </tr>
+  <% end %>
+</table>
+<h2>Add a <a href="/foods/new">new</a> food?</h2>

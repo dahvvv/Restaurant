@@ -1,4 +1,4 @@
-class Selection < ActiveRecord::Base
+class Order < ActiveRecord::Base
   belongs_to(:party)
   belongs_to(:food)
 end
