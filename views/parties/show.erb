@@ -17,6 +17,11 @@
   <input type="submit" value="Place an Order" />
 </form>
 
+<form action="/orders" method="get">
+  <input type="hidden" name="party_id" value="<%=@party.id%>" />
+  <input type="submit" value="Edit/Delete an Order" />
+</form>
+
 <h2>Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
 <form action="/parties/<%=@party.id%>" method="post">
   <input type="hidden" name="_method" value="delete" />

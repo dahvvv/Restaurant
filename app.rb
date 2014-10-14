@@ -111,6 +111,8 @@ end
 
 
 get '/orders' do
+  # party = Party.find(params[:party_id])
+  @orders = Order.where(party_id: "#{params[:party_id]}")
   erb :'/orders/index'
 end
 
@@ -123,7 +125,13 @@ end
 post '/orders' do
   order = Order.create(params[:order])
   party = Party.find(order.party_id)
-  # party = Party.find(params[:party_id])
   redirect "/parties/#{party.id}"
 end
+
+delete '/orders' do
+  order = Order.find(params[:order])
+  redirect "/parties/#{party.id}"
+end
+
+
 
