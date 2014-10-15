@@ -123,6 +123,10 @@ get '/parties/:id/receipts' do
     receipt_file << food.name.to_s + ":  $" + food.price.to_s + "\n"
   end
   receipt_file << "\n\nTOTAL:  $" + @total.to_s
+  receipt_file << "\nTIP:_____________________________\n\nSuggested:"
+  receipt_file << "\n25% = $" + (@total.to_f * 0.25).round(2).to_s
+  receipt_file << "\n20% = $" + (@total.to_f * 0.2).round(2).to_s
+  receipt_file << "\n15% = $" + (@total.to_f * 0.15).round(2).to_s
   receipt_file.close
   redirect '/'
 end
