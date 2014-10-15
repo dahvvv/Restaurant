@@ -128,9 +128,17 @@ get '/parties/:id/receipts' do
   receipt_file << "\n20% = $" + (@total.to_f * 0.2).round(2).to_s
   receipt_file << "\n15% = $" + (@total.to_f * 0.15).round(2).to_s
   receipt_file.close
-  redirect '/'
+  redirect '/download/receipt.txt'
 end
 
+get '/download/receipt.txt' do
+  # content_type '/application.txt'
+  attachment "~/src/projects/Restaurant/receipt.txt"
+end
+
+# get '/download/receipt.txt' do |filename|
+#   send_file "./files/#{receipt.txt}", :filename => receipt.txt, :type => 'Application/octet-stream'
+# end
 
 get '/orders' do
   @orders = Order.where(party_id: "#{params[:party_id]}")
@@ -178,10 +186,6 @@ delete '/orders/:id' do
   party_id = order.party_id
   order.destroy
   redirect "/parties/#{party_id}"
-end
-
-get '/receipt/download' do
-  attachment 'receipt.txt'
 end
 
 
