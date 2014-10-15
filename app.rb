@@ -26,6 +26,8 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.close  
 
 # FOOD CRUD
+
+
 get '/' do
   @foods = Food.order(:name)
   @parties = Party.all
@@ -73,7 +75,8 @@ delete '/foods/:id' do
   redirect '/foods'
 end
 
-get '/foods/chef' do
+get '/chef' do
+  @orders = Order.order(:id)
   erb :'/foods/chef'
 end
 

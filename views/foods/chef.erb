@@ -3,16 +3,20 @@
   <th>QUEUE</th>
   <th>ITEM</th>
   <th>TIME ENTERED</th>
-  <% @items.each do |item| %>
+  <% @orders.each do |order| %>
     <tr>
       <td>
-        item.queue
+        <%=order.id%>
       </td>
       <td>
-        item.name
+        <%=Food.find(order.food_id).name%>
       </td>
       <td>
-        item.time
+        <!-- food.time -->
+        someday this will say the time
+      </td>
+      <td>
+        <a href="">DONE!</a>
       </td>
     </tr>
   <% end %>
