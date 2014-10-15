@@ -132,6 +132,8 @@ end
 
 get '/orders/:id' do
   @order = Order.find(params[:id])
+  @food = Food.find(@order.food_id)
+  @party = Party.find(@order.party_id)
   erb :'/orders/show'
 end
 
