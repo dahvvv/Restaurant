@@ -127,7 +127,7 @@ get '/parties/:id/receipts' do
   receipt_file = File.open('public/receipt.txt', 'a')
   receipt_file << "Receipt for table #{@party.table_number}\n\n"
   @foods.each do |food|
-    receipt_file << food.name.to_s + ":  $" + food.price.to_s + "\n"
+    receipt_file << food.name.to_s + ":  $" + food.priceprint.to_s + "\n"
   end
   receipt_file << "\n\nTOTAL:  $" + @total.to_s
   receipt_file << "\nTIP:_____________________________\n\nSuggested:"
