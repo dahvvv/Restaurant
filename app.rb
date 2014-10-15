@@ -134,6 +134,10 @@ get '/orders/:id' do
   erb :'/orders/show'
 end
 
+get '/orders/:id/edit' do
+  erb :'/orders/edit'
+end
+
 
 delete '/orders/:id' do
   order = Order.find(params[:id])

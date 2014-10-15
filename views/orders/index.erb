@@ -8,7 +8,7 @@
         <a href="/orders/<%=order.id%>"><%=order.id%></a>
       </td>
       <td>
-        <%=order.food_id%>
+        <%=Food.find(order.food_id).name%>
       </td>
       <td>
         <%=order.party_id%>
