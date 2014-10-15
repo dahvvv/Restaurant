@@ -5,7 +5,7 @@
   <% @orders.each do |order| %>
     <tr>
       <td>
-        <%=order.id%>
+        <a href="/orders/<%=order.id%>"><%=order.id%></a>
       </td>
       <td>
         <%=order.food_id%>

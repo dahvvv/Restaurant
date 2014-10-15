@@ -1,0 +1,15 @@
+<ul>
+  <li>Order ID:  <%=@order.id%></li>
+  <li>Party ID:  <%=@order.party_id%></li>
+  <li>Food ID:  <%=@order.food_id%></li>
+</ul>
+
+<h2>Would you like to 
+<form action="/orders/<%=@order.id%>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="hidden" name="order[party_id]" value="<%=@order.party_id%>" />
+  <input type="hidden" name="order[food_id]" value="<%=@order.food_id%>" />
+  <input class="delete_order" type="submit" value="delete" />
+</form>
+   this order?</h2> 
+<a href="/parties">Back To All Parties</a>

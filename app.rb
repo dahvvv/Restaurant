@@ -128,9 +128,17 @@ post '/orders' do
   redirect "/parties/#{party.id}"
 end
 
-delete '/orders' do
-  order = Order.find(params[:order])
-  redirect "/parties/#{party.id}"
+get '/orders/:id' do
+  @order = Order.find(params[:id])
+  erb :'/orders/show'
+end
+
+
+delete '/orders/:id' do
+  order = Order.find(params[:id])
+  party_id = order.party_id
+  order.delete
+  redirect "/parties/#{party_id}"
 end
 
 
