@@ -1,11 +1,11 @@
-<h1>Receipt for Table <%=@table_number%></h1>
+<h1>Receipt for Table <%=@party.table_number%></h1>
 
 <ol>
-  <% @orders.each do |order| %>
+  <% @foods.each do |food| %>
     <li>
-      <%=order%>:  $<%=order.price%>
+      <%=food.name%>:  $<%=food.price%>
     </li>
   <% end %>
 </ol>
 
-TOTAL:  $<%=total%>
+TOTAL:  $<%=@total%>

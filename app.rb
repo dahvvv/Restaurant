@@ -114,8 +114,8 @@ end
 
 
 get '/parties/:id/receipts' do
-  @orders = Order.where(party_id: "#{params[:party_id]}")
-  @table_number = Party.find("#{params[:party_id]}").table_number
+  @party = Party.find(params[:id])
+  @foods = @party.foods
   @total = params[:total]
   erb :'/parties/receipt'
 end
