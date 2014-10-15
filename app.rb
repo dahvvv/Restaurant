@@ -118,7 +118,7 @@ end
 
 get '/orders/new' do
   @party = Party.find(params[:party_id])
-  @foods = Food.all
+  @foods = Food.order(:name)
   erb :'/orders/new'
 end
 
