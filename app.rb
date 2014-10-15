@@ -137,7 +137,7 @@ end
 delete '/orders/:id' do
   order = Order.find(params[:id])
   party_id = order.party_id
-  order.delete
+  order.destroy
   redirect "/parties/#{party_id}"
 end
 

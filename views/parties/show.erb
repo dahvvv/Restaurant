@@ -4,11 +4,13 @@
   <li>Paid?:  <%=@party.paid%></li>
   <li>ID:  <%=@party.id%></li>
   <li>Order:
-    <% @foods.each do |food| %>
-      <li>
-        <%=food.name%>
-      </li>
-    <% end %>
+    <ul>
+      <% @foods.each do |food| %>
+        <li>
+          <%=food.name%>
+        </li>
+      <% end %>
+    </ul>
   </li>
 </ul>
 
