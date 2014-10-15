@@ -117,8 +117,10 @@ get '/parties/:id/receipts' do
   @party = Party.find(params[:id])
   @foods = @party.foods
   @total = params[:total]
-  # receipt_file = File.open('receipt.txt', 'w')
-  erb :'/parties/receipt'
+  receipt_file = File.open('receipt.txt', 'w')
+  receipt_file << "Receipt for table #{@party.table_number}"
+  receipt_file.close
+  redirect '/'
 end
 
 
@@ -168,6 +170,10 @@ delete '/orders/:id' do
   party_id = order.party_id
   order.destroy
   redirect "/parties/#{party_id}"
+end
+
+get '/receipt/download' do
+  attachment 'receipt.txt'
 end
 
 
