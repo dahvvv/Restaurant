@@ -129,8 +129,9 @@ get '/parties/:id/receipts' do
   @foods.each do |food|
     receipt_file << food.name.to_s + ":  $" + food.priceprint.to_s + "\n"
   end
-  receipt_file << "\n\nTOTAL:  $" + @total.to_s
-  receipt_file << "\nTIP:_____________________________\n\nSuggested:"
+  receipt_file << "\n\nSUM:  $" + @total.to_s
+  receipt_file << "\nTIP:_____________________________"
+  receipt_file << "\nTOTAL:_____________________________\n\nSuggested Tip:"
   receipt_file << "\n25% = $" + (@total.to_f * 0.25).round(2).to_s
   receipt_file << "\n20% = $" + (@total.to_f * 0.2).round(2).to_s
   receipt_file << "\n15% = $" + (@total.to_f * 0.15).round(2).to_s
