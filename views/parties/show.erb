@@ -4,19 +4,23 @@
   <li>Paid?:  <%=@party.paid%></li>
   <li>ID:  <%=@party.id%></li>
   <li>Order:
-    <ul>
-      <% @total = 0 %>
-      <% @foods.each do |food| %>
+    <% if Order.count > 0 %>
+      <ul>
+        <% @total = 0 %>
+        <% @foods.each do |food| %>
+          <li>
+            <%=food.name%> - $<%=food.priceprint%>
+          </li>
+        <% @total += food.price %>
+        <% end %>
         <li>
-          <%=food.name%> - $<%=food.priceprint%>
+          <% @total = @total.to_s[0..-3] + "." + @total.to_s[-2..-1] %>
+          Total:  $<%=@total%>
         </li>
-      <% @total += food.price %>
-      <% end %>
-      <li>
-        <% @total = @total.to_s[0..-3] + "." + @total.to_s[-2..-1] %>
-        Total:  $<%=@total%>
-      </li>
-    </ul>
+      </ul>
+    <% else %>
+      No Orders Yet
+    <% end %>
   </li>
 </ul>
 

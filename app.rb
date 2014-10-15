@@ -22,7 +22,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE orders;')
-# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER, entered TIMESTAMP);')
+# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER, entered TIMESTAMP, fired BOOLEAN);')
 # conn.close  
 
 # FOOD CRUD
@@ -73,15 +73,6 @@ delete '/foods/:id' do
   food = Food.find(params[:id])
   food.delete
   redirect '/foods'
-end
-
-get '/chef' do
-  @orders = Order.order(:id)
-  erb :'/foods/chef'
-end
-
-post '/chef' do
-  redirect '/chef'
 end
 
 # PARTY CRUD
@@ -194,5 +185,16 @@ delete '/orders/:id' do
   order.destroy
   redirect "/parties/#{party_id}"
 end
+
+
+get '/chef' do
+  @orders = Order.order(:id)
+  erb :'/foods/chef'
+end
+
+post '/chef' do
+  redirect '/chef'
+end
+
 
 
