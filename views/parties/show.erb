@@ -5,11 +5,16 @@
   <li>ID:  <%=@party.id%></li>
   <li>Order:
     <ul>
+      <% sum = 0.00 %>
       <% @foods.each do |food| %>
         <li>
-          <%=food.name%>
+          <%=food.name%> - $<%=food.price%>
         </li>
+      <% sum += food.price %>
       <% end %>
+      <li>
+        Total:  $<%=sum%>
+      </li>
     </ul>
   </li>
 </ul>
