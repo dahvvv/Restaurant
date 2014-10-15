@@ -5,15 +5,15 @@
   <li>ID:  <%=@party.id%></li>
   <li>Order:
     <ul>
-      <% sum = 0.00 %>
+      <% @total = 0.00 %>
       <% @foods.each do |food| %>
         <li>
           <%=food.name%> - $<%=food.price%>
         </li>
-      <% sum += food.price %>
+      <% @total += food.price %>
       <% end %>
       <li>
-        Total:  $<%=sum%>
+        Total:  $<%=@total%>
       </li>
     </ul>
   </li>
@@ -38,6 +38,7 @@
 
 <form action="/parties/<%=@party.id%>/receipts" method="get">
   <input type="hidden" name="party_id" value="<%=@party.id%>" />
+  <input type="hidden" name="total" value="<%=@total%>" />
   <input type="submit" value="Print Receipt" />
 </form>
 
