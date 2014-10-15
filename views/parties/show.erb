@@ -14,6 +14,13 @@
   </li>
 </ul>
 
+<h2>Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
+<form action="/parties/<%=@party.id%>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input class="delete_party" type="submit" value="delete" />
+</form>
+   this party?</h2> 
+
 <form action="/orders/new" method="get">
   <input type="hidden" name="party_id" value="<%=@party.id%>" />
   <input type="submit" value="Place an Order" />
@@ -24,12 +31,7 @@
   <input type="submit" value="Edit/Delete an Order" />
 </form>
 
-<h2>Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
-<form action="/parties/<%=@party.id%>" method="post">
-  <input type="hidden" name="_method" value="delete" />
-  <input class="delete_party" type="submit" value="delete" />
-</form>
-   this party item?</h2> 
+
 <a href="/parties">Back To All Parties</a>
 <br>
 <a href="/">Back To Home</a>
