@@ -28,10 +28,12 @@
     <tr>
       <td><a href="/foods/<%=food.id%>"><%= food.name %></a></td>
       <td><%= food.cuisine_type %></td>
-      <td>$<%= food.price %></td>
+      <td>$<%= food.priceprint(food.price.to_s) %></td>
       <td><%= food.allergens %></td>
       <td><%= food.id %></td>
     </tr>
   <% end %>
 </table>
 <h2>Add a <a href="/foods/new">new</a> food?</h2>
+<br>
+<a href="/"><h4>Chef View</h4></a>

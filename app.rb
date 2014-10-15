@@ -73,6 +73,10 @@ delete '/foods/:id' do
   redirect '/foods'
 end
 
+get '/foods/chef' do
+  erb :'/foods/chef'
+end
+
 # PARTY CRUD
 
 get '/parties' do
@@ -182,6 +186,5 @@ delete '/orders/:id' do
   order.destroy
   redirect "/parties/#{party_id}"
 end
-
 
 
