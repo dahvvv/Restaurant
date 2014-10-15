@@ -4,8 +4,8 @@ class Food < ActiveRecord::Base
   has_many(:orders)
   has_many(:parties, :through => :orders)
 
-  def priceprint(price)
-    price.to_s[0..-3] + "." + price.to_s[-2..-1]
+  def priceprint
+    self.price.to_s[0..-3] + "." + self.price.to_s[-2..-1]
   end
 end
 
