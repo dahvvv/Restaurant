@@ -1,0 +1,19 @@
+<h1>ITEMS TO PREPARE</h1>
+<table>
+  <th>QUEUE</th>
+  <th>ITEM</th>
+  <th>TIME ENTERED</th>
+  <% @items.each do |item| %>
+    <tr>
+      <td>
+        item.queue
+      </td>
+      <td>
+        item.name
+      </td>
+      <td>
+        item.time
+      </td>
+    </tr>
+  <% end %>
+</table>
