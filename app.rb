@@ -11,13 +11,13 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.close
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
-# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, allergens VARCHAR(1000));')
+# conn.exec('DROP TABLE foods;')
+# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price DECIMAL, allergens VARCHAR(1000));')
 # conn.close
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE parties;')
 # conn.exec('CREATE TABLE parties (id SERIAL PRIMARY KEY, table_number INTEGER, number_of_guests INTEGER, paid BOOLEAN);')
-# conn.exec('INSERT INTO TABLE parties (table_number 666, number_of_guests 20, paid false, orders')
 # conn.close
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
