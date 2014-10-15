@@ -113,6 +113,11 @@ delete '/parties/:id' do
 end
 
 
+get '/parties/:id/receipts' do
+  erb :'/parties/receipt'
+end
+
+
 get '/orders' do
   # party = Party.find(params[:party_id])
   @orders = Order.where(party_id: "#{params[:party_id]}")

@@ -28,12 +28,17 @@
 
 <form action="/orders/new" method="get">
   <input type="hidden" name="party_id" value="<%=@party.id%>" />
-  <input type="submit" value="Place an Order" />
+  <input type="submit" value="Add an Order" />
 </form>
 
 <form action="/orders" method="get">
   <input type="hidden" name="party_id" value="<%=@party.id%>" />
   <input type="submit" value="Edit/Delete an Order" />
+</form>
+
+<form action="/parties/<%=@party.id%>/receipts" method="get">
+  <input type="hidden" name="party_id" value="<%=@party.id%>" />
+  <input type="submit" value="Print Receipt" />
 </form>
 
 

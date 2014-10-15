@@ -1,0 +1,11 @@
+<h1>Receipt for Table <%=@party.table_number%></h1>
+
+<ol>
+  <% @orders.each do |order| %>
+    <li>
+      <%=order%>:  $<%=order.price%>
+    </li>
+  <% end %>
+</ol>
+
+TOTAL:  $<%=total%>
