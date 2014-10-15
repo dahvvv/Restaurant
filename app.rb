@@ -118,7 +118,11 @@ get '/parties/:id/receipts' do
   @foods = @party.foods
   @total = params[:total]
   receipt_file = File.open('receipt.txt', 'w')
-  receipt_file << "Receipt for table #{@party.table_number}"
+  receipt_file << "Receipt for table #{@party.table_number}\n\n"
+  @foods.each do |food|
+    receipt_file << food.name.to_s + ":  $" + food.price.to_s + "\n"
+  end
+  receipt_file << "\n\nTOTAL:  $" + @total.to_s
   receipt_file.close
   redirect '/'
 end
