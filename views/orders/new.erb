@@ -19,4 +19,11 @@
   <% end %>
 </ul>
 
-
+<h2>Table <%=@party.table_number%>'s Order So Far</h2>
+<ul>
+  <% @party_foods.each do |food| %>
+    <li>
+      <%=food.name%>
+    </li>
+  <% end %>
+</ul>
