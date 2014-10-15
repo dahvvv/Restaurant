@@ -117,6 +117,7 @@ get '/parties/:id/receipts' do
   @party = Party.find(params[:id])
   @foods = @party.foods
   @total = params[:total]
+  # receipt_file = File.open('receipt.txt', 'w')
   erb :'/parties/receipt'
 end
 
