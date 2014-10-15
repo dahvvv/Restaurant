@@ -29,13 +29,13 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # FOOD CRUD
 get '/' do
-  @foods = Food.all
+  @foods = Food.order(:name)
   @parties = Party.all
   erb :index
 end
 
 get '/foods' do
-  @foods = Food.all
+  @foods = Food.order(:name)
   erb :'/foods/index'
 end
 
