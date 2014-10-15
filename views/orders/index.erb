@@ -1,17 +1,14 @@
+<h1>Orders for Table Number <%=@table_number%></h1>
 <table>
-  <th>order id</th>
-  <th>food_id</th>
-  <th>party_id</th>
+  <th>Food</th>
+  <th>Order Id</th>
   <% @orders.each do |order| %>
     <tr>
-      <td>
-        <a href="/orders/<%=order.id%>"><%=order.id%></a>
-      </td>
       <td>
         <%=Food.find(order.food_id).name%>
       </td>
       <td>
-        <%=order.party_id%>
+        <a href="/orders/<%=order.id%>"><%=order.id%></a>
       </td>
     </tr>
   <% end %>

@@ -113,6 +113,7 @@ end
 get '/orders' do
   # party = Party.find(params[:party_id])
   @orders = Order.where(party_id: "#{params[:party_id]}")
+  @table_number = Party.find("#{params[:party_id]}").table_number
   erb :'/orders/index'
 end
 
@@ -132,10 +133,6 @@ end
 get '/orders/:id' do
   @order = Order.find(params[:id])
   erb :'/orders/show'
-end
-
-get '/orders/:id/edit' do
-  erb :'/orders/edit'
 end
 
 
