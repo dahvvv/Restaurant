@@ -12,7 +12,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE foods;')
-# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price DECIMAL, allergens VARCHAR(1000));')
+# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, allergens VARCHAR(1000));')
 # conn.close
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
@@ -117,7 +117,10 @@ get '/parties/:id/receipts' do
   @party = Party.find(params[:id])
   @foods = @party.foods
   @total = params[:total]
-  receipt_file = File.open('receipt.txt', 'w')
+  receipt_file = File.open('public/receipt.txt', 'w')
+  receipt_file << ""
+  receipt_file.close
+  receipt_file = File.open('public/receipt.txt', 'a')
   receipt_file << "Receipt for table #{@party.table_number}\n\n"
   @foods.each do |food|
     receipt_file << food.name.to_s + ":  $" + food.price.to_s + "\n"
@@ -128,17 +131,9 @@ get '/parties/:id/receipts' do
   receipt_file << "\n20% = $" + (@total.to_f * 0.2).round(2).to_s
   receipt_file << "\n15% = $" + (@total.to_f * 0.15).round(2).to_s
   receipt_file.close
-  redirect '/download/receipt.txt'
+  erb :'parties/receipt'
 end
 
-get '/download/receipt.txt' do
-  # content_type '/application.txt'
-  attachment "~/src/projects/Restaurant/receipt.txt"
-end
-
-# get '/download/receipt.txt' do |filename|
-#   send_file "./files/#{receipt.txt}", :filename => receipt.txt, :type => 'Application/octet-stream'
-# end
 
 get '/orders' do
   @orders = Order.where(party_id: "#{params[:party_id]}")
