@@ -1,4 +1,18 @@
+<% if @errors %>
+  <div class="errors">
+    <h1>ERROR!  THAT FOOD IZ ALREADY IN DA MENU!</h1>
+    <ul>
+      <% @errors.each do |error| %>
+        <li>
+          <h2><%=error%></h2>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h1>ADD A NEW FOOD</h1>
+
 <form action="/foods" method="post">
   <input type="text" name="food[name]" placeholder="food name" />
   <input type="text" name="food[cuisine_type]" placeholder="cuisine type" />

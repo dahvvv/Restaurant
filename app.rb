@@ -45,7 +45,12 @@ end
 
 post '/foods' do
   food = Food.create(params[:food])
-  redirect '/foods'
+  if food.valid?
+    redirect '/foods'
+  else
+    @errors = food.errors.full_messages
+    erb :'/foods/new'
+  end
 end
 
 get '/foods/:id' do
