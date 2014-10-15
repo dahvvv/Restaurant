@@ -25,8 +25,6 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER);')
 # conn.close  
 
-
-
 # FOOD CRUD
 get '/' do
   @foods = Food.order(:name)

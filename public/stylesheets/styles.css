@@ -6,3 +6,7 @@ body {
 table {
   margin: auto;
 }
+
+td {
+  width: 120px;
+}
