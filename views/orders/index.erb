@@ -5,10 +5,10 @@
   <% @orders.each do |order| %>
     <tr>
       <td>
-        <%=Food.find(order.food_id).name%>
+        <a href="/orders/<%=order.id%>"><%=Food.find(order.food_id).name%></a>
       </td>
       <td>
-        <a href="/orders/<%=order.id%>"><%=order.id%></a>
+        <%=order.id%>
       </td>
     </tr>
   <% end %>
