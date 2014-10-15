@@ -22,7 +22,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE orders;')
-# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER);')
+# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER, entered TIMESTAMP);')
 # conn.close  
 
 # FOOD CRUD
@@ -78,6 +78,10 @@ end
 get '/chef' do
   @orders = Order.order(:id)
   erb :'/foods/chef'
+end
+
+post '/chef' do
+  redirect '/chef'
 end
 
 # PARTY CRUD

@@ -16,8 +16,14 @@
         someday this will say the time
       </td>
       <td>
+        <form action="/chef" method="post">
+          <input type="hidden" name="order_id" value="<%=order.id%>">
+          <input type="submit" value="DONE!" />
+        </form>
         <a href="">DONE!</a>
       </td>
     </tr>
   <% end %>
+  <a href="">RESET QUEUE</a>
+  <a href="/">HOME VIEW</a>
 </table>
