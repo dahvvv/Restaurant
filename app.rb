@@ -138,8 +138,17 @@ get '/orders/:id' do
 end
 
 get '/orders/:id/edit' do
-  binding.pry
+  @order = Order.find(params[:id])
+  @food = Food.find(@order.food_id)
+  @foods = Food.order(:name)
   erb :'/orders/edit'
+end
+
+patch '/orders/:id' do
+  order = Order.find(params[:id])
+  party_id = order.party_id
+  order.update(params[:order])
+  redirect "/parties/#{party_id}"
 end
 
 
