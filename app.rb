@@ -12,7 +12,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE foods;')
-# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, allergens VARCHAR(1000));')
+# conn.exec('CREATE TABLE foods (id SERIAL PRIMARY KEY, name VARCHAR (255), cuisine_type VARCHAR(255), price INTEGER, dollars INTEGER, cents INTEGER, allergens VARCHAR(1000));')
 # conn.close
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
@@ -44,8 +44,11 @@ get '/foods/new' do
 end
 
 post '/foods' do
+  # food = Food.create({:name => params[:name], :cuisine_type => params[:cuisine_type], :price => 0, :allergens => params[:allergens]})
   food = Food.create(params[:food])
   if food.valid?
+    price = food.dollars.to_s + food.cents.to_s
+    food.update(price: price)
     redirect '/foods'
   else
     @errors = food.errors.full_messages
