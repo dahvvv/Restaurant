@@ -1,11 +1,15 @@
 <h1>EDIT YOUR ORDER</h1>
-<h2><em>this page doesn't really do anything yet but it will make sense later when orders will have text blocks and whatnot to edit</em></h2>
+<h2><em>this page doesn't really do much yet but it will make sense later when orders will have more content to edit</em></h2>
 <form action="/orders/<%=@order.id%>" method="post">
   <input type="hidden" name="_method" value="patch" />
   <label for="order[food_id]">Food ID</label>
   <input type="text" name="order[food_id]" placeholder="food_id = <%=@order.food_id%>" />
-  <input type="checkbox" name="order[no_charge]" value="true">No Charge?</input>
-  <input type="hidden" name="id" value="<%=@order.id%>" />
+  <input type="radio" name="order[no_charge]" value="false">Charge</input>
+  <input type="radio" name="order[no_charge]" value="true">No Charge</input>
+  <input type="hidden" name="order[id]" value="<%=@order.id%>" />
+  <input type="hidden" name="order[party_id]" value="<%=@order.party_id%>" />
+  <input type="hidden" name="order[entered]" value="<%=@order.entered%>" />
+  <input type="hidden" name="order[fired]" value="<%=@order.fired%>" />
   <input type="submit">
 </form>
 
@@ -16,6 +20,9 @@
       <ul>
         <li>
           Food ID = <%= food.id %>
+        </li>
+        <li>
+          Price = $<%= food.priceprint %>
         </li>
       </ul>
     </li>
