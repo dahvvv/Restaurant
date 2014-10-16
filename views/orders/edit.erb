@@ -2,6 +2,7 @@
 <h2><em>this page doesn't really do anything yet but it will make sense later when orders will have text blocks and whatnot to edit</em></h2>
 <form action="/orders/<%=@order.id%>" method="post">
   <input type="hidden" name="_method" value="patch" />
+  <label for="order[food_id]">Food ID</label>
   <input type="text" name="order[food_id]" placeholder="food_id = <%=@order.food_id%>" />
   <input type="hidden" name="id" value="<%=@order.id%>" />
   <input type="submit">

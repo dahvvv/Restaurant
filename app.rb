@@ -96,7 +96,7 @@ end
 
 get '/parties/:id' do
   @party = Party.find(params[:id])
-  @foods = Food.where(id: @party.id)
+  @foods = @party.foods
   erb :'/parties/show'
 end
 
