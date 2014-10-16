@@ -12,8 +12,7 @@
         <%=Food.find(order.food_id).name%>
       </td>
       <td>
-        <!-- food.time -->
-        someday this will say the time
+        <%=order.entered%>
       </td>
       <td>
         <form action="/chef" method="post">
@@ -21,9 +20,8 @@
           <input type="hidden" name="fired" value="true">
           <input type="submit" value="DONE!" />
         </form>
-        <a href="">DONE!</a>
       </td>
     </tr>
   <% end %>
-  <a href="/">HOME VIEW</a>
 </table>
+<a href="/">HOME VIEW</a>
