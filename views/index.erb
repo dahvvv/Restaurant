@@ -13,23 +13,11 @@
 </div>
 
 
-<a href="/foods"><h1>Foods</h1></a>
-<table>
-  <th>Food Name</th>
-  <th>Cuisine</th>
-  <th>Price</th>
-  <th>Allergens?</th>
-  <th>Food ID</th>
-  <% @foods.each do |food| %>
-    <tr>
-      <td><a href="/foods/<%=food.id%>"><%= food.name %></a></td>
-      <td><%= food.cuisine_type %></td>
-      <td>$<%= food.priceprint %></td>
-      <td><%= food.allergens %></td>
-      <td><%= food.id %></td>
-    </tr>
-  <% end %>
-</table>
-<h2>Add a <a href="/foods/new">new</a> food?</h2>
-<br>
-<a href="/chef"><h4>Chef View</h4></a>
+
+<footer class="footer">
+  <span id="view_menu"><a href="/foods">Menu</a></span>
+  <span id="add_food"><a href="/foods/new">Add Menu Item</a></span>
+  <span id="chef_view"><a href="/chef">Chef View</a></span>
+</footer>
+
+
