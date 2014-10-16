@@ -14,7 +14,8 @@
         <% @total += order.charge.to_f.round(2)%>
         <% end %>
         <li>
-          Total:  $<%=@total.round(2)%>
+          <% @total = @total.round(2) %>
+          Total:  $<%=@total%>
         </li>
       </ul>
     <% else %>

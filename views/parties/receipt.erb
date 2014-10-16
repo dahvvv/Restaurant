@@ -3,7 +3,7 @@
 <ol>
   <% @orders.each do |order| %>
     <li>
-      <%=Food.where(:id => order.food_id)[0].name%>:  $<%=order.no_charge == true ? 0 : Food.where(:id => order.food_id)[0].priceprint%>
+      <%=order.food_name%>:  $<%=order.charge%>
     </li>
   <% end %>
 </ol>
