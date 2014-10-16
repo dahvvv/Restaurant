@@ -1,6 +1,7 @@
 body {
   text-align: center;
   margin: 0;
+  background-color: rgb(176,226,255);
 }
 
 nav {
@@ -19,7 +20,7 @@ nav {
   left: -150px;
 }
 
-#view_parties {
+#chef_view {
   position: relative;
   bottom: -13px;
   right: -150px;
@@ -28,7 +29,6 @@ nav {
 .tables {
   margin-top: 65px;
   height: 700px;
-  background-color: rgb(176,226,255);
 }
 
 .indiv_table {
@@ -75,18 +75,13 @@ footer {
 #view_menu {
   position: relative;
   bottom: -13px;
-  left: -250px;
+  left: -150px;
 }
 
 #add_food {
   position: relative;
   bottom: -13px;
-}
-
-#chef_view {
-  position: relative;
-  bottom: -13px;
-  right: -250px;
+  right: -150px;
 }
 
 

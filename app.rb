@@ -34,6 +34,11 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  party = Party.create(params[:party])
+  redirect '/'
+end
+
 get '/foods' do
   @foods = Food.order(:name)
   erb :'/foods/index'
@@ -91,11 +96,6 @@ get '/parties/new' do
   erb :'/parties/new'
 end
 
-post '/parties' do
-  party = Party.create(params[:party])
-  redirect '/parties'
-end
-
 get '/parties/:id' do
   @party = Party.find(params[:id])
   @orders = Order.where(:party_id => @party.id)
@@ -118,7 +118,7 @@ delete '/parties/:id' do
   orders = Order.where(:party_id => party.id).destroy_all
   # orders.destroy
   party.destroy
-  redirect '/parties'
+  redirect '/'
 end
 
 
