@@ -144,6 +144,13 @@ get '/parties/:id/receipts' do
   erb :'parties/receipt'
 end
 
+post '/parties/:id/receipts' do
+  id = params[:id]
+  party = Party.find(id)
+  party.update(paid: true)
+  redirect "/parties/#{id}"
+end
+
 
 get '/orders' do
   @orders = Order.where(party_id: "#{params[:party_id]}")

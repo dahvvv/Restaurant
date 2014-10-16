@@ -43,7 +43,11 @@
 
 <form action="/parties/<%=@party.id%>/receipts" method="get">
   <input type="hidden" name="total" value="<%=@total%>" />
-  <input type="submit" value="Print Receipt" />
+  <input type="submit" value="Create Receipt" />
+</form>
+
+<form action="/parties/<%=@party.id%>/receipts" method="post">
+  <input type="submit" value="Paid!">
 </form>
 
 
