@@ -98,7 +98,6 @@ end
 
 get '/parties/:id' do
   @party = Party.find(params[:id])
-  @foods = @party.foods
   @orders = Order.where(:party_id => @party.id)
   erb :'/parties/show'
 end
@@ -163,6 +162,7 @@ end
 
 get '/orders/new' do
   @party = Party.find(params[:party_id])
+  @orders = Order.where(:party_id => @party.id)
   @foods = Food.order(:name)
   @party_foods = @party.foods
   erb :'/orders/new'

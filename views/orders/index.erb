@@ -6,13 +6,13 @@
   <% @orders.each do |order| %>
     <tr>
       <td>
-        <a href="/orders/<%=order.id%>"><%=Food.find(order.food_id).name%></a>
+        <a href="/orders/<%=order.id%>"><%=order.food_name%></a>
       </td>
       <td>
         <%=order.id%>
       </td>
       <td>
-        $<%= order.no_charge == false ? Food.find(order.food_id).priceprint : 0.00%>
+        $<%=order.charge%>
       </td>
     </tr>
   <% end %>
