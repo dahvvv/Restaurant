@@ -1,14 +1,14 @@
 <h1>ITEMS TO PREPARE</h1>
 <table>
-<!--   <th>QUEUE</th>
- -->  <th>ITEM</th>
+  <th>QUEUE</th>
+  <th>ITEM</th>
   <th>TIME ENTERED</th>
   <% @orders.each do |order| %>
     <tr>
-<!--       <td>
+       <td>
         <%=order.id%>
       </td>
- -->      <td>
+      <td>
         <%=Food.find(order.food_id).name%>
       </td>
       <td>
