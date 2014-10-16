@@ -113,8 +113,8 @@ end
 
 delete '/parties/:id' do
   party = Party.find(params[:id])
-  orders = Order.where(:party_id => party.id)
-  orders.destroy
+  orders = Order.where(:party_id => party.id).destroy_all
+  # orders.destroy
   party.destroy
   redirect '/parties'
 end
