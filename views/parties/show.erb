@@ -11,10 +11,10 @@
           <li>
             <%=Food.where(:id => order.food_id)[0].name%> - $<%=order.no_charge == true ? 0 : Food.where(:id => order.food_id)[0].priceprint%>
           </li>
-        <% @total += Food.where(:id => order.food_id)[0].price.to_i %>
+        <% @total += Food.where(:id => order.food_id)[0].price.to_i if order.no_charge != true%>
         <% end %>
         <li>
-          <% @total = @total.to_s[0..-3] + "." + @total.to_s[-2..-1] %>
+          <% @total = (@total > 0 ? (@total.to_s[0..-3] + "." + @total.to_s[-2..-1]) : 0) %>
           Total:  $<%=@total%>
         </li>
       </ul>
