@@ -124,19 +124,17 @@ end
 
 get '/parties/:id/receipts' do
   @party = Party.find(params[:id])
-  @foods = @party.foods
   @total = params[:total]
   @orders = Order.where(:party_id => @party.id)
-  @discounts = @orders.where(:no_charge => true)
   receipt_file = File.open('public/receipt.txt', 'w')
   receipt_file << ""
   receipt_file.close
   receipt_file = File.open('public/receipt.txt', 'a')
   receipt_file << "Receipt for table #{@party.table_number}\n\n"
   @orders.each do |order|
-    receipt_file << Food.where(:id => order.food_id)[0].name + ":  $" + (order.no_charge == true ? "0" : Food.where(:id => order.food_id)[0].priceprint) + "\n"  
+    receipt_file << order.food_name.to_s + ":  $" + order.charge.to_s + "\n"  
   end
-  receipt_file << "\n\nSUM:  $" + @total.to_s
+  receipt_file << "\n\nSUM:  $" + @total
   receipt_file << "\nTIP:_____________________________"
   receipt_file << "\nTOTAL:_____________________________\n\nSuggested Tip:"
   receipt_file << "\n25% = $" + (@total.to_f * 0.25).round(2).to_s
