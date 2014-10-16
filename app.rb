@@ -22,7 +22,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE orders;')
-# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, party_id INTEGER, entered TIMESTAMP, fired BOOLEAN);')
+# conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, no_charge BOOLEAN, party_id INTEGER, entered TIMESTAMP, fired BOOLEAN);')
 # conn.close  
 
 # FOOD CRUD
@@ -99,6 +99,7 @@ end
 get '/parties/:id' do
   @party = Party.find(params[:id])
   @foods = @party.foods
+  @orders = Order.where(:party_id => @party.id)
   erb :'/parties/show'
 end
 
@@ -126,13 +127,15 @@ get '/parties/:id/receipts' do
   @party = Party.find(params[:id])
   @foods = @party.foods
   @total = params[:total]
+  @orders = Order.where(:party_id => @party.id)
+  @discounts = @orders.where(:no_charge => true)
   receipt_file = File.open('public/receipt.txt', 'w')
   receipt_file << ""
   receipt_file.close
   receipt_file = File.open('public/receipt.txt', 'a')
   receipt_file << "Receipt for table #{@party.table_number}\n\n"
   @foods.each do |food|
-    receipt_file << food.name.to_s + ":  $" + food.priceprint.to_s + "\n"
+    receipt_file << food.name.to_s + ":  $" + food.priceprint.to_s + "\n"  
   end
   receipt_file << "\n\nSUM:  $" + @total.to_s
   receipt_file << "\nTIP:_____________________________"

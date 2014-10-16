@@ -4,6 +4,7 @@
   <input type="hidden" name="_method" value="patch" />
   <label for="order[food_id]">Food ID</label>
   <input type="text" name="order[food_id]" placeholder="food_id = <%=@order.food_id%>" />
+  <input type="checkbox" name="order[no_charge]" value="true">No Charge?</input>
   <input type="hidden" name="id" value="<%=@order.id%>" />
   <input type="submit">
 </form>

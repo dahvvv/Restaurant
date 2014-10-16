@@ -2,6 +2,7 @@
 
 <form action="/orders" method="post">
   <input type="text" name="order[food_id]" placeholder="Type Food ID Here!" />
+  <input type="checkbox" name="order[no_charge]" value="true">No Charge?</input>
   <input type="hidden" name="order[party_id]" value="<%=@party.id%>" />
   <input type="hidden" name="order[fired]" value="false" />
   <input type="hidden" name="order[entered]" value="<%=Time.now%>">
