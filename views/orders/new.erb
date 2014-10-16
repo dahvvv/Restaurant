@@ -17,19 +17,26 @@
         <li>
           Food ID = <%= food.id %>
         </li>
+        <li>
+          Price = $<%= food.priceprint %>
+        </li>
       </ul>
     </li>
   <% end %>
 </ul>
 
 <h2>Table <%=@party.table_number%>'s Order So Far</h2>
-<ul>
-  <% @party_foods.each do |food| %>
-    <li>
-      <%=food.name%>  $<%=food.priceprint%>
-    </li>
-  <% end %>
-</ul>
+<% if @orders.count > 0 %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        <%=order.food_name%>  $<%=order.charge%>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <em>No orders yet!</em>
+<% end %>
 
 <h3><a href="/parties">Back to All Parties</a></h3>
 <h3><a href="/">Back to Home</a></h3>
