@@ -3,6 +3,18 @@ body {
   table-layout: 
 }
 
+nav {
+  height: 65px;
+  background-color: antiquewhite;
+}
+
+#add_party {
+  font-size: 1.8em;
+  position: relative;
+  bottom: -13px;
+  left: -150px;
+}
+
 .indiv_table {
   height: 150px;
   width: 150px;

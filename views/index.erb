@@ -1,4 +1,7 @@
-<a href="/parties"><h1>Parties</h1></a>
+<nav class="navbar">
+  <span id="add_party"><a href="/parties/new">Add A Party</a></span>
+  <span id="view_parties"><a href="/parties">See All Parties</a></span>
+</nav>
 
 <div class="tables">
   <% @parties.each do |party| %>
@@ -9,7 +12,6 @@
   <% end %>
 </div>
 
-<h2>Add a <a href="/parties/new">new</a> party?</h2>
 
 <a href="/foods"><h1>Foods</h1></a>
 <table>
