@@ -134,8 +134,8 @@ get '/parties/:id/receipts' do
   receipt_file.close
   receipt_file = File.open('public/receipt.txt', 'a')
   receipt_file << "Receipt for table #{@party.table_number}\n\n"
-  @foods.each do |food|
-    receipt_file << food.name.to_s + ":  $" + food.priceprint.to_s + "\n"  
+  @orders.each do |order|
+    receipt_file << Food.where(:id => order.food_id)[0].name + ":  $" + (order.no_charge == true ? "0" : Food.where(:id => order.food_id)[0].priceprint) + "\n"  
   end
   receipt_file << "\n\nSUM:  $" + @total.to_s
   receipt_file << "\nTIP:_____________________________"
