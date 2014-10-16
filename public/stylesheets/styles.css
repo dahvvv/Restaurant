@@ -4,10 +4,17 @@ body {
 }
 
 .indiv_table {
-  background-color: green;
   height: 50px;
   width: 50px;
   margin: 25px;
+}
+
+.indiv_table.true {
+    background-color: green;
+}
+
+.indiv_table.false {
+    background-color: red;
 }
 
 table {

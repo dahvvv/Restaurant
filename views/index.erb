@@ -1,17 +1,15 @@
 <a href="/parties"><h1>Parties</h1></a>
+
 <div class="tables">
-
-
-
   <% @parties.each do |party| %>
-    <div class="indiv_table">
+    <div class="indiv_table <%=party.paid%>">
       <h5><a href="/parties/<%=party.id%>"><%= party.table_number %></a></h5>
       <h6><%= party.number_of_guests %></h6>
     </div>
   <% end %>
 </div>
-<h2>Add a <a href="/parties/new">new</a> party?</h2>
 
+<h2>Add a <a href="/parties/new">new</a> party?</h2>
 
 <a href="/foods"><h1>Foods</h1></a>
 <table>
