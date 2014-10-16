@@ -9,7 +9,7 @@
         <% @total = 0 %>
         <% @orders.each do |order| %>
           <li>
-            <%=Food.where(:id => order.food_id)[0].name%> - $<%=Food.where(:id => order.food_id)[0].priceprint%>
+            <%=Food.where(:id => order.food_id)[0].name%> - $<%=order.no_charge == true ? 0 : Food.where(:id => order.food_id)[0].priceprint%>
           </li>
         <% @total += Food.where(:id => order.food_id)[0].price.to_i %>
         <% end %>
