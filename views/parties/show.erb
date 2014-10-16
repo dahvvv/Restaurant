@@ -9,7 +9,7 @@
         <% @total = 0 %>
         <% @orders.each do |order| %>
           <li>
-            <%=Food.where(:id => order.food_id)[0].name%> - $<%=order.charge%>
+            <%=order.food_name%> - $<%=order.charge%>
           </li>
         <% @total += order.charge.to_f.round(2)%>
         <% end %>

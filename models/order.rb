@@ -10,5 +10,12 @@ class Order < ActiveRecord::Base
       food.price.to_s[0..-3] + "." + food.price.to_s[-2..-1]
     end
   end
+
+  def food_name
+    Food.where(:id => self.food_id)[0].name
+  end
 end
+
+
+
 
