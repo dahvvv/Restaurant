@@ -188,7 +188,7 @@ end
 
 
 get '/chef' do
-  @orders = Order.order(:id)
+  @orders = Order.where(:fired => false).order(:id)
   erb :'/foods/chef'
 end
 
