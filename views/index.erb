@@ -7,12 +7,10 @@
   <% @parties.each do |party| %>
     <div class="indiv_table <%=party.paid%>">
       <a href="/parties/<%=party.id%>"><h3 class="table_num cf"><%= party.table_number %></h3></a>
-      <h6 class="guests_num"><%= party.number_of_guests %> GUESTS</h6>
+      <span class="guests_num"><%= party.number_of_guests %> GUESTS</span>
     </div>
   <% end %>
 </div>
-
-
 
 <footer class="footer">
   <span id="view_menu"><a href="/foods">Menu</a></span>
