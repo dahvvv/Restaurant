@@ -7,9 +7,12 @@
   <label for="food[cuisine_type]">Cuisine Type</label>
   <input type="text" name="food[cuisine_type]" value="<%=@food.cuisine_type%>" />
   <br>
-  <label for="food[price]">Price</label>
-  <input type="number"  step="0.01" name="food[price]" value="<%=@food.price%>" />
-  <br>
+<!--   <label for="food[price]">Price</label>
+ <input type="number"  step="0.01" name="food[price]" value="<%=@food.price%>" />-->  
+
+  <label for="food[dollars]">Dollars and Cents</label>
+  <input type="hidden" name="food[price]" value="0">
+  $<input type="text" name="food[dollars]" value="<%=@food.dollars%>" />.<input type="text" name="food[cents]" value="<%=@food.cents%>" /><br>
   <label for="food[allergens]">Allergens</label>
   <input type="text" name="food[allergens]" value="<%=@food.allergens%>" />
   <br>

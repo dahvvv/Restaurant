@@ -69,6 +69,8 @@ end
 patch '/foods/:id' do
   food = Food.find(params[:id])
   food.update(params[:food])
+  price = food.dollars.to_s + food.cents.to_s
+  food.update(price: price)
   redirect "/foods/#{food.id}"
 end
 
