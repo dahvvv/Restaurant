@@ -3,6 +3,13 @@ body {
   table-layout: 
 }
 
+.indiv_table {
+  background-color: green;
+  height: 50px;
+  width: 50px;
+  margin: 25px;
+}
+
 table {
   margin: auto;
 }

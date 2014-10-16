@@ -1,19 +1,15 @@
 <a href="/parties"><h1>Parties</h1></a>
-<ul></ul>
-<table>
-  <th>Table Number</th>
-  <th>Number of Guests</th>
-  <th>Paid?</th>
-  <th>Party ID</th>
+<div class="tables">
+
+
+
   <% @parties.each do |party| %>
-    <tr>
-      <td><a href="/parties/<%=party.id%>"><%= party.table_number %></a></td>
-      <td><%= party.number_of_guests %></td>
-      <td><%= party.paid %></td>
-      <td><%= party.id %></td>
-    </tr>
+    <div class="indiv_table">
+      <h5><a href="/parties/<%=party.id%>"><%= party.table_number %></a></h5>
+      <h6><%= party.number_of_guests %></h6>
+    </div>
   <% end %>
-</table>
+</div>
 <h2>Add a <a href="/parties/new">new</a> party?</h2>
 
 
