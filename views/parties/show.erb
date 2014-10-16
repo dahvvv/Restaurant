@@ -9,13 +9,12 @@
         <% @total = 0 %>
         <% @orders.each do |order| %>
           <li>
-            <%=Food.where(:id => order.food_id)[0].name%> - $<%=order.no_charge == true ? 0 : Food.where(:id => order.food_id)[0].priceprint%>
+            <%=Food.where(:id => order.food_id)[0].name%> - $<%=order.charge%>
           </li>
-        <% @total += Food.where(:id => order.food_id)[0].price.to_i if order.no_charge != true%>
+        <% @total += order.charge.to_f.round(2)%>
         <% end %>
         <li>
-          <% @total = (@total > 0 ? (@total.to_s[0..-3] + "." + @total.to_s[-2..-1]) : 0) %>
-          Total:  $<%=@total%>
+          Total:  $<%=@total.round(2)%>
         </li>
       </ul>
     <% else %>
