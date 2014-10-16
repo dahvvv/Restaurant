@@ -4,7 +4,7 @@
   <li>Paid?:  <%=@party.paid%></li>
   <li>ID:  <%=@party.id%></li>
   <li>Order:
-    <% if Order.where(fired: false).count > 0 %>
+    <% if @foods.count > 0 %>
       <ul>
         <% @total = 0 %>
         <% @foods.each do |food| %>
