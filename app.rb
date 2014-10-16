@@ -93,7 +93,7 @@ end
 
 get '/parties/:id' do
   @party = Party.find(params[:id])
-  @foods = @party.foods
+  @foods = Food.where(id: @party.id)
   erb :'/parties/show'
 end
 
@@ -110,7 +110,9 @@ end
 
 delete '/parties/:id' do
   party = Party.find(params[:id])
-  party.delete
+  orders = Order.where(:party_id => party.id)
+  orders.destroy
+  party.destroy
   redirect '/parties'
 end
 
@@ -193,6 +195,8 @@ get '/chef' do
 end
 
 post '/chef' do
+  order = Order.find(params[:id])
+  order.update(:fired => params[:fired])
   redirect '/chef'
 end
 
