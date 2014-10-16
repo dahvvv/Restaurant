@@ -1,8 +1,8 @@
 <ul>
   <li>Order ID:  <%=@order.id%></li>
   <li>Table Number:  <%=@party.table_number%></li>
-  <li>Food:  <%=@food.name%></li>
-  <li>Price: $<%= order.no_charge == false ? @food.priceprint : 0.00 %></li>
+  <li>Food:  <%=@order.food_name%></li>
+  <li>Price: $<%= @order.charge %></li>
 </ul>
 
 <h2>Would you like to <a href="/orders/<%=@order.id%>/edit">edit</a> or
