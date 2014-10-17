@@ -161,10 +161,14 @@ end
 
 get '/orders/new' do
   @party = Party.find(params[:party_id])
-  @orders = Order.where(:party_id => @party.id)
-  @foods = Food.order(:name)
-  @party_foods = @party.foods
-  erb :'/orders/new'
+  if @party.paid != true
+    @orders = Order.where(:party_id => @party.id)
+    @foods = Food.order(:name)
+    @party_foods = @party.foods
+    erb :'/orders/new'
+  else
+    redirect "/errors/order_on_paid_party"
+  end
 end
 
 post '/orders' do
@@ -212,6 +216,20 @@ post '/chef' do
   order.update(:fired => params[:fired])
   redirect '/chef'
 end
+
+get '/errors/order_on_paid_party' do
+  erb :'/errors/order_on_paid_party'
+end
+
+
+
+
+
+
+
+
+
+
 
 
 

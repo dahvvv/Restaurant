@@ -1,8 +1,4 @@
-# require "#{ROOT}/models/validators/hasnt_paid_validator"
-
 class Order < ActiveRecord::Base
-  validates hasnt_paid: true
-
   belongs_to(:party)
   belongs_to(:food)
 
