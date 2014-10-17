@@ -1,2 +1,25 @@
 <h1>HISTORY OF RECEIPTS</h1>
 
+<% @receipts.each do |receipt| %>
+  <h2>Receipt For Table Number <%=receipt.table_number%></h2>
+  <%receipt.food_list.delete! "[" %>
+  <%receipt.food_list.delete! "]" %>
+  <%receipt.food_list.delete! ":" %>
+  <% foods = receipt.food_list.split(',')%>
+  <%receipt.price_list.delete! "[" %>
+  <%receipt.price_list.delete! "]" %>
+  <%receipt.price_list.delete! ":" %>
+  <% prices = receipt.price_list.split(',')%><ul>
+    <% (0...foods.count).each do |n| %>
+      <li>
+        <%=foods[n].gsub("_", " ")%> - $<%=prices[n]%>
+      </li>
+    <% end %>
+  </ul>
+  <br><br>
+<% end %> 
+
+
+
+
+<a href="/">Back to Home</a>
