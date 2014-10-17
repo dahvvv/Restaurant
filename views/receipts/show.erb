@@ -15,11 +15,12 @@
   <% prices = receipt.price_list.split(',')%><ul>
     <% (0...foods.count).each do |n| %>
       <li>
-        <%=foods[n].gsub("_", " ")%> - $<%=prices[n]%>
+        <%=foods[n].gsub("_", " ")%> - 
+        $<%=prices[n][-2] != "." ? prices[n] : prices[n] + "0"%>
       </li>
     <% end %>
   </ul>
-  <h4>TOTAL:  $<%=receipt.total%></h4>
+  <h4>TOTAL:  $<%=receipt.total[-2] != "." ? receipt.total : receipt.total + "0"%></h4>
 <h6>------------------------------------------------------------</h6>
 <% end %> 
 
