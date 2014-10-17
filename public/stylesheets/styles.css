@@ -167,6 +167,7 @@ td {
 
 table.orders_index a {
   margin: 2em;
+  color: rgb(0,0,249);
 }
 
 th {
@@ -187,10 +188,6 @@ ul.parties_show li {
 .add_party {
   font-size: 2.5em;
 }
-
-/*ol.receipt {
-  margin: auto;
-}*/
 
 form.inline {
   display: inline;
@@ -251,7 +248,7 @@ input.delete_party {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: none;
   display: inline;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 input.delete_orders_show {
@@ -260,6 +257,27 @@ input.delete_orders_show {
 
 h2.orders_show {
   font-size: 3em; 
+}
+
+h2.orders_show a {
+  text-decoration: underline;
+}
+
+h2.receipts_index {
+  font-size: 2em;
+}
+
+h2.receipts_index a {
+  text-decoration: underline;
+}
+
+h2.edit_party a {
+  color: rgb(0,0,249);
+  text-decoration: underline;
+}
+
+.warning {
+  color: red;
 }
 
 table.orders_index td {

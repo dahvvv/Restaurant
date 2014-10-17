@@ -23,14 +23,16 @@ TOTAL:  ___________________
 <em>15% = $<%=(@total.to_f * 0.15).round(2)%></em>
 
 <br><br>
-Look good?
-<br><br>
-<a href="/receipt.txt" download>Download Receipt</a> or 
+<h1 class="warning">Double check that everything is correct!</h1>
+<br>
 
-<form action="/orders" method="get">
-  <input type="hidden" name="party_id" value="<%=@party.id%>">
-  <input type="submit" value="Edit Order" />
-</form>
+<h2 class="receipts_index">...and then 
+  <a href="/receipt.txt" download>Download The Receipt</a> or 
+  <form class="inline" action="/orders" method="get">
+    <input type="hidden" name="party_id" value="<%=@party.id%>">
+    <input class="delete_party" type="submit" value="Make Some Edits" />
+  </form>
+</h2>
 
 <footer class="footer">
   <span id="go_home"><a href="/">HOME VIEW</a></span>
