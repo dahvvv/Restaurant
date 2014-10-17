@@ -1,3 +1,10 @@
+<h2 class="edit_party">Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
+
+<form class="inline" action="/parties/<%=@party.id%>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input class="delete_party" type="submit" value="delete" />
+</form> this party?</h2> 
+<h3>-----------------------------------------------</h3>
 <ul>
   <li>Table: <%=@party.table_number%></li>
   <li>Guests: <%=@party.number_of_guests%></li>
@@ -27,13 +34,6 @@
     <% end %>
   </li>
 </ul>
-<h3>-----------------------------------------------</h3>
-<h2 class="edit_party">Would you like to <a href="/parties/<%=@party.id%>/edit">edit</a> or 
-
-<form class="inline" action="/parties/<%=@party.id%>" method="post">
-  <input type="hidden" name="_method" value="delete" />
-  <input class="delete_party" type="submit" value="delete" />
-</form> this party?</h2> 
 
 <form class="party_show" action="/orders/new" method="get">
   <input type="hidden" name="party_id" value="<%=@party.id%>" />
