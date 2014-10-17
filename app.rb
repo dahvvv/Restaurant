@@ -158,7 +158,7 @@ post '/parties/:id/receipts' do
 end
 
 get '/receipts' do
-  @receipts = Receipt.order(:time)
+  @receipts = Receipt.order(time: :desc)
   erb :'/receipts/show'
 end
 

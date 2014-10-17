@@ -1,7 +1,10 @@
+<a href="/">Back to Home</a>
+<br>
 <h1>HISTORY OF RECEIPTS</h1>
 
 <% @receipts.each do |receipt| %>
-  <h2>Receipt For Table Number <%=receipt.table_number%></h2>
+  <h2><%=receipt.time%></h2>
+  <h3>Receipt For Table Number <%=receipt.table_number%></h3>
   <%receipt.food_list.delete! "[" %>
   <%receipt.food_list.delete! "]" %>
   <%receipt.food_list.delete! ":" %>
@@ -17,9 +20,7 @@
     <% end %>
   </ul>
   <h4>TOTAL:  $<%=receipt.total%></h4>
-  <br><br>
+<h6>------------------------------------------------------------</h6>
 <% end %> 
 
 
-
-<a href="/">Back to Home</a>
