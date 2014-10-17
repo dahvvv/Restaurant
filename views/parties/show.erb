@@ -1,7 +1,7 @@
 <ul>
   <li>Table Number:  <%=@party.table_number%></li>
   <li>Number of Guests:  <%=@party.number_of_guests%></li>
-  <li>Paid?:  <%=@party.paid%></li>
+  <li><%= @party.paid == true ? "Have Paid!" : "Have Not Yet Paid"%></li>
   <li>ID:  <%=@party.id%></li>
   <li>Order:
     <% if @orders.count > 0 %>
