@@ -1,30 +1,26 @@
 <h1>EDIT YOUR ORDER</h1>
-<h2><em>this page doesn't really do much yet but it will make sense later when orders will have more content to edit</em></h2>
-<form action="/orders/<%=@order.id%>" method="post">
-  <input type="hidden" name="_method" value="patch" />
-  <label for="order[food_id]">Food ID</label>
-  <input type="text" name="order[food_id]" placeholder="food_id = <%=@order.food_id%>" />
-  <input type="radio" name="order[no_charge]" value="false">Charge</input>
-  <input type="radio" name="order[no_charge]" value="true">No Charge</input>
-  <input type="hidden" name="order[id]" value="<%=@order.id%>" />
-  <input type="hidden" name="order[party_id]" value="<%=@order.party_id%>" />
-  <input type="hidden" name="order[entered]" value="<%=@order.entered%>" />
-  <input type="hidden" name="order[fired]" value="<%=@order.fired%>" />
-  <input type="submit">
-</form>
 
 <ul>
-  <% @foods.each do |food| %>
-    <li>
-      <%= food.name %>
-      <ul>
-        <li>
-          Food ID = <%= food.id %>
-        </li>
-        <li>
-          Price = $<%= food.priceprint %>
-        </li>
-      </ul>
-    </li>
-  <% end %>
+  <li><%=@order.food_name%></li>
+  <li>$<%=@order.charge%></li>
+  <li><%=@order.fired != true ? "Not Yet Fired" : "Has Been Fired"%></li>
+  <li>entered at <%=@order.entered%></li>
 </ul>
+
+<br>
+
+<form action="/orders/<%=@order.id%>" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <% @foods.each do |food| %>
+    <input type="radio" name="order[food_id]" value="<%=food.id%>"><%= food.name %> - $<%= food.priceprint %><br></input>
+  <% end %>
+  <br><br>
+  <input type="radio" name="order[no_charge]" value="false">Charge</input>
+  <input type="radio" name="order[no_charge]" value="true">No Charge</input>
+  <br>
+  <input type="hidden" name="order[party_id]" value="<%=@order.party_id%>" />
+  <input type="hidden" name="order[fired]" value="@order.fired" />
+  <input type="hidden" name="order[entered]" value="@order.entered">
+  <br><br>
+  <input type="submit">
+</form>
