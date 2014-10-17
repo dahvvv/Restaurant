@@ -23,12 +23,12 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn = PG::Connection.open(dbname: 'restaurant_db')
 # conn.exec('DROP TABLE orders;')
 # conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, no_charge BOOLEAN, party_id INTEGER, entered TIMESTAMP, fired BOOLEAN);')
-# conn.close  
+# conn.close   
 
-# conn = PG::Connection.open(dbname: 'restaurant_db')
-# conn.exec('DROP TABLE receipts;')
-# conn.exec('CREATE TABLE receipts (id SERIAL PRIMARY KEY, table_number INTEGER, food_name VARCHAR (255), price_cents INTEGER, time TIMESTAMP);')
-# conn.close  
+conn = PG::Connection.open(dbname: 'restaurant_db')
+conn.exec('DROP TABLE receipts;')
+conn.exec('CREATE TABLE receipts (id SERIAL PRIMARY KEY, table_number INTEGER, food_list VARCHAR (10000), price_list VARCHAR (10000), total VARCHAR(255), time TIMESTAMP);')
+conn.close  
 
 # FOOD CRUD
 
@@ -122,7 +122,7 @@ delete '/parties/:id' do
   party = Party.find(params[:id])
   orders = Order.where(:party_id => party.id).destroy_all
   # orders.destroy
-  party.destroy
+  party.delete
   redirect '/'
 end
 
@@ -153,10 +153,12 @@ post '/parties/:id/receipts' do
   id = params[:id]
   party = Party.find(id)
   party.update(paid: true)
+  Receipt.create(params[:receipt])
   redirect "/parties/#{id}"
 end
 
 get '/receipts' do
+  @parties = Party.all
   erb :'/receipts/show'
 end
 

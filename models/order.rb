@@ -14,6 +14,7 @@ class Order < ActiveRecord::Base
   def food_name
     Food.where(:id => self.food_id)[0].name
   end
+
 end
 
 
