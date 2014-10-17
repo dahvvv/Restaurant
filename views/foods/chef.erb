@@ -1,4 +1,4 @@
-<h1>ITEMS TO PREPARE</h1>
+<h1 class="items">ITEMS TO PREPARE</h1>
 <table>
   <th>QUEUE</th>
   <th>ITEM</th>
@@ -12,7 +12,7 @@
         <%=Food.find(order.food_id).name%>
       </td>
       <td>
-        <%=order.entered%>
+        <%=order.entered.strftime("%l:%M%p, %^b %-d %Y")%>
       </td>
       <td>
         <form action="/chef" method="post">
@@ -24,4 +24,8 @@
     </tr>
   <% end %>
 </table>
-<a href="/">HOME VIEW</a>
+
+<footer class="footer">
+  <span id="go_home"><a href="/">HOME VIEW</a></span>
+</footer>
+

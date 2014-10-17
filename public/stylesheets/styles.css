@@ -1,7 +1,11 @@
 body {
   text-align: center;
   margin: 0;
+  padding: 0;
   background-color: #b0c6d9;
+  color: rgb(54,50,150);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
 }
 
 nav {
@@ -13,6 +17,19 @@ nav {
   font-size: 1.8em;
 
 }
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 0.3em;
+}
+
+ul.orders_show li {
+  font-size: 2em;
+}
+
 
 #add_party {
   position: relative;
@@ -38,19 +55,17 @@ nav {
   border-radius: 100%;
   float: left;
   display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .indiv_table.true {
-    background-color: green;
+  background-color: green;
 }
 
 .indiv_table.false {
-    background-color: red;
+  background-color: rgb(205,55,0);
 }
 
-a {
-  text-decoration: none;
-}
 
 .table_num {
   margin-top: 30px;
@@ -61,6 +76,19 @@ a {
   display: block;
   font-size: 1.2em;
   margin-top: -70px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a.foods_index {
+  text-decoration: underline;
 }
 
 div.receipt_history {
@@ -79,6 +107,10 @@ footer {
   font-size: 1.8em;
 }
 
+footer.footer_two_links {
+
+}
+
 #view_menu {
   position: relative;
   bottom: -13px;
@@ -91,24 +123,153 @@ footer {
   right: -150px;
 }
 
+#go_home {
+  position: relative;
+  bottom: -13px;
+}
+
+#order_views_left {
+  position: relative;
+  bottom: -13px;
+  left: -150px;
+}
+
+#order_views_right {
+  position: relative;
+  bottom: -13px;
+  right: -150px;
+}
+
+#foods_show_left {
+  position: relative;
+  bottom: -13px;
+  left: -150px;
+}
+
+#foods_show_right {
+  position: relative;
+  bottom: -13px;
+  right: -150px;
+}
+
+h1.items {
+  font-size: 2.5em;
+}
+
 
 table {
   margin: auto;
 }
 
 td {
-  width: 120px;
+  width: 200px;
+}
+
+table.orders_index a {
+  margin: 2em;
+}
+
+th {
+  font-size: 1.7em;
+  padding: 20px;
+  color: rgb(67,110,238);
+}
+
+li {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+ul.parties_show li {
+  font-size: 1em;
 }
 
 .add_party {
   font-size: 2.5em;
 }
 
+/*ol.receipt {
+  margin: auto;
+}*/
+
+form.inline {
+  display: inline;
+  padding: 0px;
+  margin: -4px;
+}
+
+input.party_show {
+  font-size: 1em;
+  color: black;
+}
+
+input.edit_party {
+  height: 2em; 
+  margin: 0.8em;
+}
+
+
 input.new_party {
   height: 50px;
   font-size: 25px;
   text-align: center;
   margin: 10px;
+}
+
+form.party_show {
+  display: inline;
+}
+
+form.party_show input {
+  color: rgb(54,100,139);
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 20px;
+  height: 3.5em;
+  background: none;
+  border: 3px solid;
+}
+
+form.orders_new input[type="radio"] {
+  margin: 0.75em;
+}
+
+input.party_show {
+  margin-top: 0;
+  margin-left: auto;
+  margin-bottom: 0;
+  margin-right: auto;
+  height: 3.5em;
+}
+
+input.delete_party {
+  color: rgb(0,0,249);
+  background-color: #b0c6d9;
+  font-size: 1.05em;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: none;
+  display: inline;
+  text-decoration: none;
+}
+
+input.delete_orders_show {
+  display: inline;
+}
+
+h2.orders_show {
+  font-size: 3em; 
+}
+
+table.orders_index td {
+  width: 400px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+table.orders_index a {
+  text-decoration: underline;
 }
 
 /*#submit_new_party {

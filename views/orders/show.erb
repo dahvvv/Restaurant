@@ -1,20 +1,20 @@
-<ul>
-  <li>Order ID:  <%=@order.id%></li>
+<ul class="orders_show">
   <li>Table Number:  <%=@party.table_number%></li>
   <li>Food:  <%=@order.food_name%></li>
   <li>Price: $<%= @order.charge %></li>
 </ul>
+<h3>-----------------------------------------------</h3>
 
-<h2>Would you like to <a href="/orders/<%=@order.id%>/edit">edit</a> or
-
-
-<form action="/orders/<%=@order.id%>" method="post">
+<h2 class="orders_show">Would you like to <a href="/orders/<%=@order.id%>/edit">edit</a> or
+<form class="inline" action="/orders/<%=@order.id%>" method="post">
   <input type="hidden" name="_method" value="delete" />
   <input type="hidden" name="order[party_id]" value="<%=@order.party_id%>" />
   <input type="hidden" name="order[food_id]" value="<%=@order.food_id%>" />
-  <input class="delete_order" type="submit" value="delete" />
+  <input class="delete_party" type="submit" value="delete" />
 </form>
    this order?</h2> 
-<a href="/parties/#<%=@party.id%>">Back To Party</a>
-<br>
-<a href="/">Back To Home</a>
+
+
+<footer class="footer">
+  <span id="order_views_left"><a href="/parties/<%=@order.party_id%>">BACK TO PARTY</a></span><span id="order_views_right"><a href="/">HOME VIEW</a></span>
+</footer>

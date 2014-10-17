@@ -1,6 +1,6 @@
 <h1>PLACE AN ORDER FOR TABLE <%=@party.table_number%></h1>
 
-<form action="/orders" method="post">
+<form class="orders_new" action="/orders" method="post">
   <% @foods.each do |food| %>
     <input type="radio" name="order[food_id]" value="<%=food.id%>"><%= food.name %> - $<%= food.priceprint %><br></input>
   <% end %>
@@ -9,7 +9,8 @@
   <br>
   <input type="hidden" name="order[party_id]" value="<%=@party.id%>" />
   <input type="hidden" name="order[fired]" value="false" />
-  <input type="hidden" name="order[entered]" value="<%=Time.now%>">
+  <input type="hidden" name="order[entered]" value="<%=Time.now%>" />
+  <br>
   <input type="submit">
 </form>
 
@@ -26,5 +27,6 @@
   <em>No orders yet!</em>
 <% end %>
 
-<h3><a href="/parties">Back to All Parties</a></h3>
-<h3><a href="/">Back to Home</a></h3>
+<footer class="footer">
+  <span id="go_home"><a href="/">HOME VIEW</a></span>
+</footer>

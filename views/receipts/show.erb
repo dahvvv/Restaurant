@@ -3,7 +3,7 @@
 <h1>HISTORY OF RECEIPTS</h1>
 
 <% @receipts.each do |receipt| %>
-  <h2><%=receipt.time%></h2>
+  <h2><%=receipt.time.strftime("%l:%M%p, %^b %-d %Y")%></h2>
   <h3>Receipt For Table Number <%=receipt.table_number%></h3>
   <%receipt.food_list.delete! "[" %>
   <%receipt.food_list.delete! "]" %>

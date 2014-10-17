@@ -1,12 +1,12 @@
 <h1>Receipt for Table <%=@party.table_number%></h1>
 
-<ol>
+<ul>
   <% @orders.each do |order| %>
     <li>
       <%=order.food_name%>:  $<%=order.charge%>
     </li>
   <% end %>
-</ol>
+</ul>
 
 TOTAL:  $<%=@total%>
 <br>
@@ -31,5 +31,7 @@ Look good?
   <input type="hidden" name="party_id" value="<%=@party.id%>">
   <input type="submit" value="Edit Order" />
 </form>
-<br>
-<h3><a href="/">Back Home</a></h3>
+
+<footer class="footer">
+  <span id="go_home"><a href="/">HOME VIEW</a></span>
+</footer>
