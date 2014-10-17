@@ -6,6 +6,96 @@
   <title>RESTaurant</title>
   <link rel="stylesheet" href="/stylesheets/styles.css">
 
+  <style>
+
+    @media (min-width: 400px) and (max-width: 700px) {
+      nav {
+        height: 55px;
+        font-size: 1.5em;
+      }
+
+      #add_party {
+        left: -50px;
+      }
+
+      #chef_view {
+        right: -50px;
+      }
+
+      .indiv_table {
+        height: 90px;
+        width: 90px;
+        margin: 15px;
+      }
+
+      .table_num {
+        margin-top: 20px;
+        font-size: 3em;
+      }
+
+      .guests_num {
+        display: none;
+      }
+
+      footer {
+        height: 55px;
+        font-size: 1.5em;
+      }
+
+      #view_menu {
+        left: -50px;
+      }
+
+      #add_food {
+        right: -50px;
+      }
+    } 
+
+    @media (max-width: 400px) {
+      nav {
+        height: 45px;
+        font-size: 1.2em;
+      }
+
+      #add_party {
+        left: -20px;
+      }
+
+      #chef_view {
+        right: -20px;
+      }
+
+      .indiv_table {
+        height: 85px;
+        width: 85px;
+        margin: 15px;
+      }
+
+      .table_num {
+        margin-top: 20px;
+        font-size: 3em;
+      }
+
+      .guests_num {
+        display: none;
+      }
+
+      footer {
+        height: 45px;
+        font-size: 1.2em;
+      }
+
+      #view_menu {
+        left: -20px;
+      }
+
+      #add_food {
+        right: -20px;
+      }
+    } 
+      
+  </style>
+
 </head>
 <body>
   <%= yield %>
