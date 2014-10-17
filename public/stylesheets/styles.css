@@ -63,6 +63,13 @@ a {
   margin-top: -70px;
 }
 
+div.receipt_history {
+  position: fixed;
+  bottom: 75px;
+  width: 100%;
+  font-size: 1.3em;
+}
+
 footer {
   position: absolute;
   bottom: 0;
