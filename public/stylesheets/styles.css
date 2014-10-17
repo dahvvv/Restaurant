@@ -276,6 +276,10 @@ h2.edit_party a {
   text-decoration: underline;
 }
 
+h2.new_food a {
+  text-decoration: underline;
+}
+
 .warning {
   color: red;
 }
