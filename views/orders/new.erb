@@ -1,29 +1,18 @@
 <h1>PLACE AN ORDER FOR TABLE <%=@party.table_number%></h1>
 
+
 <form action="/orders" method="post">
-  <input type="text" name="order[food_id]" placeholder="Type Food ID Here!" />
+  <% @foods.each do |food| %>
+    <input type="radio" name="order[food_id]" value="<%=food.id%>"><%= food.name %> - $<%= food.priceprint %><br></input>
+  <% end %>
+  <br>
   <input type="checkbox" name="order[no_charge]" value="true">No Charge?</input>
+  <br>
   <input type="hidden" name="order[party_id]" value="<%=@party.id%>" />
   <input type="hidden" name="order[fired]" value="false" />
   <input type="hidden" name="order[entered]" value="<%=Time.now%>">
   <input type="submit">
 </form>
-
-<ul>
-  <% @foods.each do |food| %>
-    <li>
-      <%= food.name %>
-      <ul>
-        <li>
-          Food ID = <%= food.id %>
-        </li>
-        <li>
-          Price = $<%= food.priceprint %>
-        </li>
-      </ul>
-    </li>
-  <% end %>
-</ul>
 
 <h2>Table <%=@party.table_number%>'s Order So Far</h2>
 <% if @orders.count > 0 %>
