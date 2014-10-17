@@ -25,6 +25,11 @@ TOTAL:  ___________________
 <br><br>
 Look good?
 <br><br>
-<a href="/receipt.txt" download>Download Receipt</a>
+<a href="/receipt.txt" download>Download Receipt</a> or 
 
+<form action="/orders" method="get">
+  <input type="hidden" name="party_id" value="<%=@party.id%>">
+  <input type="submit" value="Edit Order" />
+</form>
+<br>
 <h3><a href="/">Back Home</a></h3>
