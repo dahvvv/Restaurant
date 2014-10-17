@@ -25,6 +25,11 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.exec('CREATE TABLE orders (id SERIAL PRIMARY KEY, food_id INTEGER, no_charge BOOLEAN, party_id INTEGER, entered TIMESTAMP, fired BOOLEAN);')
 # conn.close  
 
+conn = PG::Connection.open(dbname: 'restaurant_db')
+conn.exec('DROP TABLE receipts;')
+conn.exec('CREATE TABLE receipts (id SERIAL PRIMARY KEY, table_number INTEGER, food_name VARCHAR (255), price_cents INTEGER, time TIMESTAMP);')
+conn.close  
+
 # FOOD CRUD
 
 
@@ -141,7 +146,7 @@ get '/parties/:id/receipts' do
   receipt_file << "\n20% = $" + (@total.to_f * 0.2).round(2).to_s
   receipt_file << "\n15% = $" + (@total.to_f * 0.15).round(2).to_s
   receipt_file.close
-  erb :'parties/receipt'
+  erb :'/receipts/index'
 end
 
 post '/parties/:id/receipts' do
@@ -150,7 +155,6 @@ post '/parties/:id/receipts' do
   party.update(paid: true)
   redirect "/parties/#{id}"
 end
-
 
 get '/orders' do
   @party_id = params[:party_id]
