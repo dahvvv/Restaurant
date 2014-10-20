@@ -34,7 +34,7 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 
 
 get '/' do
-  @foods = Food.order(:name)
+  # @foods = Food.order(:name)
   @parties = Party.all
   erb :index
 end
@@ -92,10 +92,10 @@ end
 
 # PARTY CRUD
 
-get '/parties' do
-  @parties = Party.all
-  erb :'/parties/index'
-end
+# get '/parties' do
+#   @parties = Party.all
+#   erb :'/parties/index'
+# end
 
 get '/parties/new' do
   erb :'/parties/new'
@@ -217,7 +217,7 @@ end
 
 
 get '/chef' do
-  @orders = Order.where(:fired => false).order(id: :desc)
+  @orders = Order.list_for_chef
   erb :'/foods/chef'
 end
 

@@ -15,6 +15,10 @@ class Order < ActiveRecord::Base
     Food.where(:id => self.food_id)[0].name
   end
 
+  def self.list_for_chef
+    self.where(:fired => false).order(id: :desc)
+  end
+
 end
 
 
