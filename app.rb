@@ -30,6 +30,8 @@ Dir[ROOT_PATH + "/models/*.rb"].each { |file| require file }
 # conn.exec('CREATE TABLE receipts (id SERIAL PRIMARY KEY, table_number INTEGER, food_list VARCHAR (10000), price_list VARCHAR (10000), total VARCHAR(255), time TIMESTAMP);')
 # conn.close  
 
+
+
 # FOOD CRUD
 
 

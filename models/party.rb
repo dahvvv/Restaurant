@@ -14,4 +14,12 @@ class Party < ActiveRecord::Base
     end
   end
 
+  def total
+    total = 0
+    self.orders.each do |order|
+      total += order.charge.to_f
+    end
+    "$#{total.round(2)}"
+  end
+
 end
