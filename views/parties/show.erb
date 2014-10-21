@@ -4,35 +4,37 @@
   <input type="hidden" name="_method" value="delete" />
   <input class="delete_party" type="submit" value="delete" />
 </form> this party?</h2> 
+
 <h3>-----------------------------------------------</h3>
+
+<% if @orders.count > 0 %>
+  <ul class="parties_show">
+    <% @total = 0 %>
+    <% @foods_a = [] %>
+    <% @prices_a = [] %>
+    <% @orders.each do |order| %>
+      <li>
+        <%=order.food_name%> - $<%=order.charge%>
+        <% @foods_a << order.food_name.gsub(" ", "_").to_sym %>
+        <% @prices_a << order.charge.to_f %>
+      </li>
+    <% @total += order.charge.to_f.round(2)%>
+    <% end %>
+    <li>
+      <% @total = @total.round(2) %>
+      Total:  $<%=@total%>
+    </li>
+  </ul>
+<% else %>
+  No Orders Yet
+<% end %>
+
+<h3>-----------------------------------------------</h3>
+
 <ul>
   <li>Table: <%=@party.table_number%></li>
   <li>Guests: <%=@party.number_of_guests%></li>
   <li><%= @party.paid == true ? "Have Paid!" : "Paid?:  Not Yet"%></li>
-  <h3>-----------------------------------------------</h3>
-  <li>
-    <% if @orders.count > 0 %>
-      <ul class="parties_show">
-        <% @total = 0 %>
-        <% @foods_a = [] %>
-        <% @prices_a = [] %>
-        <% @orders.each do |order| %>
-          <li>
-            <%=order.food_name%> - $<%=order.charge%>
-            <% @foods_a << order.food_name.gsub(" ", "_").to_sym %>
-            <% @prices_a << order.charge.to_f %>
-          </li>
-        <% @total += order.charge.to_f.round(2)%>
-        <% end %>
-        <li>
-          <% @total = @total.round(2) %>
-          Total:  $<%=@total%>
-        </li>
-      </ul>
-    <% else %>
-      No Orders Yet
-    <% end %>
-  </li>
 </ul>
 
 <form class="party_show" action="/orders/new" method="get">
@@ -52,7 +54,7 @@
 
 <form class="party_show" action="/parties/<%=@party.id%>/receipts" method="post">
   <input type="hidden" name="receipt[table_number]" value="<%=@party.table_number%>" />
-  <input type="hidden" name="receipt[food_list]" value="<%= @foods_a %>" />
+  <input type="hidden" name="receipt[food_list]" value="<%= @party.food_names_for_receipt %>" />
   <input type="hidden" name="receipt[price_list]" value="<%= @prices_a %>" />
   <input type="hidden" name="receipt[total]" value="<%=@total.to_s%>" />
   <input type="hidden" name="receipt[time]" value="<%=Time.now%>" />
