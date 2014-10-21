@@ -8,4 +8,10 @@ class Party < ActiveRecord::Base
     end
   end
 
+  def prices_for_receipt
+    self.orders.map do |order|
+      order.charge.to_f
+    end
+  end
+
 end
